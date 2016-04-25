@@ -4,19 +4,6 @@
 	<title>ShoutBoard | The best message board on the internet.</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" href="stylesheets/style.css" />
-	<script type="text/javascript">
-		/*eslint-env browser */
-		function resize_canvas() {
-			var canvas = document.getElementById("whatANiceCanvas");
-			canvas.width = window.innerWidth;
-			canvas.height = window.innerHeight;
-			
-			var ctx = canvas.getContext("2d");
-			ctx.moveTo(0,0);
-			ctx.lineTo(canvas.width, canvas.height);
-			ctx.stroke();
-		}
-	</script>
 </head>
 <body onresize="resize_canvas()">
 	<canvas id="whatANiceCanvas" width="800" height="600" style="border:1px solid #FFFFFF">
