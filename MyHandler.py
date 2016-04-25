@@ -5,5 +5,4 @@ except ImportError:
 
 class MyHandler(Handler):
 	def do_GET(self):
-		print("yay")
-		return super(MyHandler, self).do_GET()
+		super(MyHandler, self).do_GET()
