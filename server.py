@@ -1,10 +1,12 @@
 import os
 try:
-  from SimpleHTTPServer import SimpleHTTPRequestHandler as Handler
-  from SocketServer import TCPServer as Server
+#	from SimpleHTTPServer import SimpleHTTPRequestHandler as Handler
+	from SocketServer import TCPServer as Server
 except ImportError:
-  from http.server import SimpleHTTPRequestHandler as Handler
-  from http.server import HTTPServer as Server
+#	from http.server import SimpleHTTPRequestHandler as Handler
+	from http.server import HTTPServer as Server
+from MyHandler import MyHandler as Handler	
+
 
 # Read port selected by the cloud for our application
 PORT = int(os.getenv('PORT', 8000))
@@ -13,9 +15,9 @@ os.chdir('static')
 
 httpd = Server(("", PORT), Handler)
 try:
-  print("Start serving at port %i" % PORT)
-  httpd.serve_forever()
+	print("Start serving at port %i" % PORT)
+	httpd.serve_forever()
 except KeyboardInterrupt:
-  pass
+	pass
 httpd.server_close()
 
