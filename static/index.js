@@ -9,19 +9,40 @@ var canvas = document.getElementById('whatANiceCanvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-var penSize = 10;
+var penSize = 5;
+var penDown = false;
 
 var context = canvas.getContext('2d');
+context.lineWidth = penSize * 2;
 
 var drawPoint = function(e) {
-	context.beginPath();
-	context.arc(e.offSetX, e.offSetY, penSize, 0, Math.PI * 2);
-	context.fill();
+	if (penDown) {
+		context.lineTo(e.clientX, e.clientY);
+		context.stroke();
+		context.beginPath();
+		context.arc(e.clientX, e.clientY, penSize, 0, Math.PI * 2);
+		context.fill();
+		context.beginPath();
+		context.moveTo(e.clientX, e.clientY);
+	}	
+
 }
 
+var dropPen = function(e) {
+	penDown = true;
+	drawPoint(e);
+}
 
+var liftPen = function() {
+	penDown = false;
+	context.beginPath();
+	
+}
 
-canvas.addEventListener('mousedown', drawPoint)
+canvas.addEventListener('mousedown', dropPen);
+canvas.addEventListener('mousemove', drawPoint);
+canvas.addEventListener('mouseup', liftPen);
+
 
 function resize_canvas() {
 			var sizing = document.getElementById("whatANiceCanvas");
