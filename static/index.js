@@ -43,8 +43,9 @@ canvas.addEventListener('mousedown', dropPen);
 canvas.addEventListener('mousemove', drawPoint);
 canvas.addEventListener('mouseup', liftPen);
 
-
 function resize_canvas() {
+	// do something with canvas
+	/*
 			var sizing = document.getElementById("whatANiceCanvas");
 			sizing.width = window.innerWidth;
 			sizing.height = window.innerHeight;
@@ -53,4 +54,5 @@ function resize_canvas() {
 			ctx.moveTo(0,0);
 			ctx.lineTo(sizing.width, sizing.height);
 			ctx.stroke();
+	*/
 }
