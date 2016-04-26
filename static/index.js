@@ -7,9 +7,9 @@ canvas.height = window.innerHeight;
 
 var penSize = 5;
 var penDown = false;
-var red = 256;
-var green = 256;
-var blue = 256;
+var red = 0;
+var green = 0;
+var blue = 0;
 var drawMode = false;
 
 changeMode();
@@ -80,11 +80,18 @@ function clearCanvas() {
 function saveImage() {
     var data = canvas.toDataURL();
     
-    var name = prompt("Name your image", "Sample Name");
-    if (name != null) {
-        sendPOSTRequest(name, data);
-    }
     
+    var imagename = prompt("Name your image", "Sample Name");
+   	if (imagename !== null) {
+   		var response = nameAvailable(imagename);
+   		if (response == false) {
+   			//name already taken
+   		}
+   		else if (response == true) {
+   	    	 sendPOSTRequest(name, data);
+    	}
+	}
+
  //   window.open(data, '_blank', 'location=0, menubar=0');
 }
 
