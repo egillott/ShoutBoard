@@ -19,11 +19,12 @@ class MyHandler(Handler, object):
 				self.send_header("Content-type", "text/text")
 				self.end_headers()
 				self.wfile.write(response)
-			response = "image not found"
-			self.send_response(404)
-			self.send_header("Content-type", "text/text")
-			self.end_headers()
-			self.wfile.write(response)
+			else:
+				response = "image not found"
+				self.send_response(404)
+				self.send_header("Content-type", "text/text")
+				self.end_headers()
+				self.wfile.write(response)
 		else:
 			super(MyHandler, self).do_GET()
 		
