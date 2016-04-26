@@ -14,7 +14,7 @@ class MyHandler(Handler, object):
 		print("url path" ,self.path)
 		content_len = int(self.headers.get('Content-Length', 0))
 		print("content_len",content_len)
-		post_body = self.rfile.read(content_len).decode("utf-8")
+		post_body = strs(self.rfile.read(content_len).decode("utf-8"))
 		print("data!!", post_body)
 #		result = parse_qs(post_body)
 #		for k in result:
