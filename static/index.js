@@ -84,10 +84,10 @@ function saveImage() {
     var imagename = prompt("Name your image", "Sample Name");
    	if (imagename !== null) {
    		var response = nameAvailable(imagename);
-   		if (response == false) {
+   		if (response === "False") {
    			//name already taken
    		}
-   		else if (response == true) {
+   		else if (response === "True") {
    	    	 sendPOSTRequest(name, data);
     	}
 	}

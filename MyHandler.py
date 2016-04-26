@@ -10,7 +10,10 @@ class MyHandler(Handler, object):
 	sql = SqlHandler()
 
 	def do_GET(self):
-		super(MyHandler, self).do_GET()
+		if self.path.startswith('/image/'):
+			pass
+		else:
+			super(MyHandler, self).do_GET()
 		
 	def do_POST(self):
 		print("url path" ,self.path)
