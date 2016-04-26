@@ -49,6 +49,10 @@ function clearCanvas() {
     }
     
 }
+function saveImage() {
+    var data = canvas.toDataURL();
+    window.open(data, '_blank', 'location=0, menubar=0');
+}
 
 var dropPen = function(e) {
     if (drawMode) {
