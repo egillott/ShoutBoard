@@ -109,9 +109,6 @@ canvas.addEventListener('mouseup', liftPen);
 function init() {
 	penSize = 5;
     penDown = false;
-    red = 256;
-    green = 256;
-    blue = 256;
     drawMode = false;
     context.lineWidth = penSize * 2;
     changeMode();
