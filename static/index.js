@@ -10,6 +10,7 @@ var penDown = false;
 var red = 256;
 var green = 256;
 var blue = 256;
+var drawMode = false;
 
 var context = canvas.getContext('2d');
 context.lineWidth = penSize * 2;
@@ -29,10 +30,22 @@ var drawPoint = function(e) {
 	}	
 
 }
+function changeMode() {
+    var x = document.getElementById("button1");
+    if (!drawMode) {
+        x.value = "Go Into Something Else";
+    }
+    else {
+        x.value = "Go Into Draw Mode";
+    }
+    drawMode = !drawMode;
+}
 
 var dropPen = function(e) {
-	penDown = true;
-	drawPoint(e);
+    if (drawMode) {
+        penDown = true;
+        drawPoint(e);
+    }
 }
 
 var liftPen = function() {
