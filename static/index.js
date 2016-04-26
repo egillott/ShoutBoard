@@ -88,7 +88,22 @@ function saveImage() {
 
  //   window.open(data, '_blank', 'location=0, menubar=0');
 }
-
+function loadImage() {
+    var imagename = prompt("What image would you like to retrieve?", "Sample Name");
+    if (imagename !== null) {
+   	
+   /*
+        var response = nameAvailable(imagename);
+        if (response === "False") {
+            // load image
+        }
+        else if (response === "True") {
+            alert("No image found!");
+        }
+       */
+//      window.open(data, '_blank', 'location=0, menubar=0');
+    }
+}
 var dropPen = function(e) {
     if (drawMode) {
         penDown = true;
