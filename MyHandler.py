@@ -8,3 +8,7 @@ except ImportError:
 class MyHandler(Handler, object):
 	def do_GET(self):
 		super(MyHandler, self).do_GET()
+		
+	def do_POST(self):
+		print("server post")
+		super(MyHandler, self).do_POST()
