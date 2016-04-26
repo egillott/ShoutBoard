@@ -189,10 +189,11 @@ function sendPOSTRequest(imageName, imageData) {
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState === 4 && xhttp.status === 200) {
 			console.log(xhttp.responseText);
+			return xhttp.responseText;
 		}
 	}
 }
 
 function nameAvailable(imageName) {
-	sendPOSTRequest("check", imageName);
+	return sendPOSTRequest("check", imageName);
 }

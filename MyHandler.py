@@ -10,8 +10,9 @@ class MyHandler(Handler, object):
 	sql = SqlHandler()
 
 	def do_GET(self):
-		if self.path.startswith('/image/'):
-			pass
+		recv = self.path
+		if recv.startswith('/image/'):
+			imageName = recv[7:]
 		else:
 			super(MyHandler, self).do_GET()
 		
