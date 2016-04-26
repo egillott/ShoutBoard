@@ -13,10 +13,11 @@ var blue = 256;
 var drawMode = false;
 
 changeMode();
-updateIndicator();
 
 var context = canvas.getContext('2d');
 context.lineWidth = penSize * 2;
+
+updateIndicator();
 
 var drawPoint = function(e) {
 	if (penDown) {
@@ -32,7 +33,7 @@ var drawPoint = function(e) {
 		context.moveTo(e.clientX, e.clientY);
 	}	
 
-}
+};
 function changeMode() {
     var x = document.getElementById("mode");
     if (!drawMode) {
@@ -44,7 +45,7 @@ function changeMode() {
     drawMode = !drawMode;
 }
 function clearCanvas() {
-    if (confirm("Are you sure you want to clear?") == true) {
+    if (confirm("Are you sure you want to clear?") === true) {
         context.clearRect(0,0,canvas.width, canvas.height);
     }
     
@@ -59,13 +60,13 @@ var dropPen = function(e) {
         penDown = true;
         drawPoint(e);
     }
-}
+};
 
 var liftPen = function() {
 	penDown = false;
 	context.beginPath();
 	
-}
+};
 
 canvas.addEventListener('mousedown', dropPen);
 canvas.addEventListener('mousemove', drawPoint);
@@ -81,9 +82,9 @@ function changePenSize(value) {
 }
 
 function changePenColor(type, value) {
-	if (type == 1)
+	if (type === 1)
 		red = value;
-	else if (type == 2)
+	else if (type === 2)
 		green = value;
 	else 
 		blue = value;
