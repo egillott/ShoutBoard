@@ -164,8 +164,9 @@ function resize_canvas() {
 testPOSTRequest();
 function testPOSTRequest() {
 	var xhttp = new XMLHttpRequest();
+	var msg = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAPTCAYAAABR9xSMAAAg";
 	xhttp.open("POST", "submit", true);
 	xhttp.setRequestHeader("Content-type", "img");
-	xhttp.setRequestHeader("Content-Length", "70");
-	xhttp.send("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAPTCAYAAABR9xSMAAAg");
+	xhttp.setRequestHeader("Content-Length", msg.length);
+	xhttp.send(msg);
 }
