@@ -5,8 +5,6 @@ var canvas = document.getElementById('whatANiceCanvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-testPOSTRequest();
-
 var penSize = 5;
 var penDown = false;
 var red = 256;
@@ -163,6 +161,7 @@ function resize_canvas() {
 	*/
 }
 
+testPOSTRequest();
 function testPOSTRequest() {
 	var xhttp = new XMLHttpRequest();
 	xhttp.open("POST", "submit", true);
