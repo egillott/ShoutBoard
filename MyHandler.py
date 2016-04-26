@@ -22,5 +22,5 @@ class MyHandler(Handler, object):
 #		super(MyHandler, self).do_POST()
 		self.send_response(200)
 		self.send_header("Content-type", "text/html")
-        self.end_headers()
-        self.wfile.write(bytes("sample response", "utf-8"))
+		self.end_headers()
+		self.wfile.write(bytes("sample response", "utf-8"))
