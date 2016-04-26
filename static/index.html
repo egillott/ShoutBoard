@@ -12,8 +12,8 @@
 	<input id="colorRSlider" type="range" min="0" max="256" value="256" step="1" style="z-index: 2; position:absolute; bottom:70px; right:10px" onchange="changePenColor(1, this.value)" />
 	<input id="colorGSlider" type="range" min="0" max="256" value="256" step="1" style="z-index: 2; position:absolute; bottom:40px; right:10px" onchange="changePenColor(2, this.value)" />
 	<input id="colorBSlider" type="range" min="0" max="256" value="256" step="1" style="z-index: 2; position:absolute; bottom:10px; right:10px" onchange="changePenColor(3, this.value)" />
-    <input id="button1" type="button" value="Go Into Draw Mode" style="z-index: 2; position:absolute; bottom:10px; left:60%" onclick="changeMode()" />
-    
+    <input id="mode" type="button" value="Go Into Draw Mode" style="z-index: 2; position:absolute; bottom:10px; left:60%" onclick="changeMode()" />
+    <input id="clear" type="button" value="Clear Canvas" style="z-index: 2; position:absolute; bottom:10px; left:10%" onclick="clearCanvas()" />
     
     
 	<script type="text/javascript" src="index.js"></script>
