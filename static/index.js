@@ -75,7 +75,14 @@ canvas.addEventListener('mousemove', drawPoint);
 canvas.addEventListener('mouseup', liftPen);
 
 function init() {
-
+	penSize = 5;
+    penDown = false;
+    red = 256;
+    green = 256;
+    blue = 256;
+    drawMode = false;
+    context.lineWidth = penSize * 2;
+    changeMode();
 }
 
 function changePenSize(value) {
@@ -103,6 +110,18 @@ function updateIndicator() {
 
 function resize_canvas() {
 	// do something with canvas
+	var data = canvas.toDataURL();
+    var sizing = document.getElementById("whatANiceCanvas");
+    sizing.width = window.innerWidth;
+    sizing.height = window.innerHeight;
+    
+    var ctx = sizing.getContext("2d");
+    var img = new Image;
+    img.onload = function() {
+        ctx.drawImage(img, 0,0);
+    };
+    img.src = data;
+    init();
 	/*
 			var sizing = document.getElementById("whatANiceCanvas");
 			sizing.width = window.innerWidth;
