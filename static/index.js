@@ -1,7 +1,3 @@
-// index.js
-
-// request message on server
-//Calls SimpleServlet to get the "Hello World" message
 /*eslint-env browser */
 /*globals ActiveXObject */
 
@@ -11,16 +7,22 @@ canvas.height = window.innerHeight;
 
 var penSize = 5;
 var penDown = false;
+var red = 256;
+var green = 256;
+var blue = 256;
 
 var context = canvas.getContext('2d');
 context.lineWidth = penSize * 2;
 
 var drawPoint = function(e) {
 	if (penDown) {
+
 		context.lineTo(e.clientX, e.clientY);
+		context.strokeStyle = 'rgb('+red+','+green+','+blue+')';
 		context.stroke();
 		context.beginPath();
 		context.arc(e.clientX, e.clientY, penSize, 0, Math.PI * 2);
+		context.fillStyle = 'rgb('+red+','+green+','+blue+')';
 		context.fill();
 		context.beginPath();
 		context.moveTo(e.clientX, e.clientY);
@@ -42,6 +44,24 @@ var liftPen = function() {
 canvas.addEventListener('mousedown', dropPen);
 canvas.addEventListener('mousemove', drawPoint);
 canvas.addEventListener('mouseup', liftPen);
+
+function init() {
+
+}
+
+function changePenSize(value) {
+	penSize = value;
+	context.lineWidth = penSize * 2;
+}
+
+function changePenColor(type, value) {
+	if (type == 1)
+		red = value;
+	else if (type == 2)
+		green = value;
+	else 
+		blue = value;
+}
 
 function resize_canvas() {
 	// do something with canvas

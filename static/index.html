@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>ShoutBoard | The best message board on the internet.</title>
+	<title>ShoutBoard | The best drawing board on the internet.</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" href="stylesheets/style.css" />
 </head>
-<body onresize="resize_canvas()">
-	<canvas id="whatANiceCanvas" width="800" height="600" style="border:1px solid #FFFFFF">
+<body onresize="resize_canvas()" onload="init()">
+	<canvas id="whatANiceCanvas" width="800" height="600" style="border:1px solid #FFFFFF; z-index: 1">
 	Your browser doesn't support canvas</canvas>
+	<input id="lineWidthSlider" type="range" min="0" max="25" value="5" step="1" style="z-index: 2; position:absolute; bottom:10px; left:45%" onchange="changePenSize(this.value)" />
+	<input id="colorRSlider" type="range" min="0" max="256" value="256" step="1" style="z-index: 2; position:absolute; bottom:70px; right:10px" onchange="changePenColor(1, this.value)" />
+	<input id="colorGSlider" type="range" min="0" max="256" value="256" step="1" style="z-index: 2; position:absolute; bottom:40px; right:10px" onchange="changePenColor(2, this.value)" />
+	<input id="colorBSlider" type="range" min="0" max="256" value="256" step="1" style="z-index: 2; position:absolute; bottom:10px; right:10px" onchange="changePenColor(3, this.value)" />
 	<script type="text/javascript" src="index.js"></script>
 </body>
 </html>
