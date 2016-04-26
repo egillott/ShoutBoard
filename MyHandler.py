@@ -10,5 +10,7 @@ class MyHandler(Handler, object):
 		super(MyHandler, self).do_GET()
 		
 	def do_POST(self):
-		print("server post")
+		print(self.address_string())
+		print()
+		print(self.path)
 		super(MyHandler, self).do_POST()

@@ -5,6 +5,8 @@ var canvas = document.getElementById('whatANiceCanvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+testPOSTRequest();
+
 var penSize = 5;
 var penDown = false;
 var red = 256;
@@ -111,4 +113,16 @@ function resize_canvas() {
 			ctx.lineTo(sizing.width, sizing.height);
 			ctx.stroke();
 	*/
+}
+
+function testPOSTRequest() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	    if (xhttp.readyState === 4 && xhttp.status === 200) {
+    	  document.getElementById("demo").innerHTML = xhttp.responseText;
+    	}
+  	};
+	xhttp.open("POST", "submit", true);
+	xhttp.setRequestHeader("Content-type", "img");
+	xhttp.send("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAPTCAYAAABR9xSMAAAg");
 }
