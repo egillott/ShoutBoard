@@ -11,9 +11,11 @@ class MyHandler(Handler, object):
 		super(MyHandler, self).do_GET()
 		
 	def do_POST(self):
-		print("i think this is what i want" ,self.path)
-        content_len = int(self.headers.get('Content-Length', 0))
-		post_body = self.rfile.read(content_len).decode("utf-8")
+		print("url path" ,self.path)
+		print("headers" ,self.headers)
+		
+#        content_len = int(self.headers.get('Content-Length', 0))
+#		post_body = self.rfile.read(content_len).decode("utf-8")
 #		result = parse_qs(post_body)
 #        for k in result:
 #            print(result[k])
