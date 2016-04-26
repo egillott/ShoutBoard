@@ -17,13 +17,22 @@ var drawMode = false;
 changeMode();
 
 var context = canvas.getContext('2d');
+
+var offsetX = 0;
+var offsetY = 0;
+
+var image = new Image();
+image.onload = function() {
+    draw();
+};
+image.src='images/test.png';
+
 context.lineWidth = penSize * 2;
 
 updateIndicator();
 
 var drawPoint = function(e) {
-	if (penDown) {
-
+	if (penDown && drawMode) {
 		context.lineTo(e.clientX, e.clientY);
 		context.strokeStyle = 'rgb('+red+','+green+','+blue+')';
 		context.stroke();
@@ -34,12 +43,30 @@ var drawPoint = function(e) {
 		context.beginPath();
 		context.moveTo(e.clientX, e.clientY);
 	}	
-
+	else if(penDown && !drawMode) {
+		translatePoint(e);
+	}
 };
+var translatePoint = function(e) {
+	if (penDown) {
+		offsetX-=(e.clientX/1);
+		offsetY-=(e.clientY/1);
+		draw();
+		offsetX=0;
+		offsetY=0;
+	}
+};
+function draw() {
+    context.save();
+    context.translate(offsetX, offsetY);
+    context.clearRect(-offsetX, -offsetY, window.innerWidth, window.innerHeight);
+    context.drawImage(image,0,0);
+    context.restore();
+}
 function changeMode() {
     var x = document.getElementById("mode");
     if (!drawMode) {
-        x.value = "Go Into Something Else";
+        x.value = "Go Into Navigate Mode";
     }
     else {
         x.value = "Go Into Draw Mode";
@@ -62,12 +89,17 @@ var dropPen = function(e) {
         penDown = true;
         drawPoint(e);
     }
+    else {
+	penDown = true;
+	//translatePoint(e);
+        //offsetX-=50;
+        draw();
+    }
 };
 
 var liftPen = function() {
 	penDown = false;
 	context.beginPath();
-	
 };
 
 canvas.addEventListener('mousedown', dropPen);
