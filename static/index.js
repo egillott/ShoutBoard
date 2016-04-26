@@ -79,7 +79,13 @@ function clearCanvas() {
 }
 function saveImage() {
     var data = canvas.toDataURL();
-    window.open(data, '_blank', 'location=0, menubar=0');
+    
+    var name = prompt("Name your image", "Sample Name");
+    if (name != null) {
+        sendPOSTRequest(name, data);
+    }
+    
+ //   window.open(data, '_blank', 'location=0, menubar=0');
 }
 
 var dropPen = function(e) {
@@ -110,6 +116,7 @@ function init() {
     drawMode = false;
     context.lineWidth = penSize * 2;
     changeMode();
+    updateIndicator();
 }
 
 function changePenSize(value) {
