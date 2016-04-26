@@ -83,13 +83,7 @@ function saveImage() {
     
     var imagename = prompt("Name your image", "Sample Name");
    	if (imagename !== null) {
-   		var response = nameAvailable(imagename);
-   		if (response === "False") {
-   			//name already taken
-   		}
-   		else if (response === "True") {
-   	    	 sendPOSTRequest(name, data);
-    	}
+   		tryUploading(imagename, data);
 	}
 
  //   window.open(data, '_blank', 'location=0, menubar=0');
@@ -186,14 +180,16 @@ function sendPOSTRequest(imageName, imageData) {
 	xhttp.open("POST", "submit", true);
 	xhttp.setRequestHeader("Content-type", "img");
 	xhttp.send(msg);
-	xhttp.onreadystatechange = function() {
-		if (xhttp.readyState === 4 && xhttp.status === 200) {
-			console.log(xhttp.responseText);
-			return xhttp.responseText;
-		}
-	}
+	return xhttp;
 }
 
-function nameAvailable(imageName) {
-	return sendPOSTRequest("check", imageName);
+function tryUploading(imageName, imageData) {
+	var xhttp = sendPOSTRequest("check", imageName);
+	xhttp.onreadystatechange = function() {
+		if (xhttp.readyState === 4 && xhttp.status === 200) {
+			if (xhttp.responseText === "True") {
+				sendPOSTRequest(imageName, imageData);
+			}
+		}
+	};
 }

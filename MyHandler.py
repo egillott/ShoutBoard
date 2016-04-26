@@ -13,6 +13,8 @@ class MyHandler(Handler, object):
 		recv = self.path
 		if recv.startswith('/image/'):
 			imageName = recv[7:]
+#			if self.sql.nameAvailable(imageName):
+				
 		else:
 			super(MyHandler, self).do_GET()
 		

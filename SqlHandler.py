@@ -23,3 +23,9 @@ class SqlHandler:
 		c.execute("SELECT * FROM image")
 		print(c.fetchall())
 		return 'okay'
+		
+	def getImage(self, name):
+		query = "SELECT image FROM image WHERE name = '" + name + "'"
+		c = self.conn.cursor()
+		c.execute(query)
+		return c.fetchall()
