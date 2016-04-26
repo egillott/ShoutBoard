@@ -13,6 +13,7 @@ var blue = 256;
 var drawMode = false;
 
 changeMode();
+updateIndicator();
 
 var context = canvas.getContext('2d');
 context.lineWidth = penSize * 2;
@@ -82,6 +83,15 @@ function changePenColor(type, value) {
 		green = value;
 	else 
 		blue = value;
+	updateIndicator();
+}
+
+function updateIndicator() {
+	context.beginPath();
+	context.arc(window.innerWidth-80, window.innerHeight-120, 20, 0, Math.PI * 2);
+	context.fillStyle = 'rgb('+red+','+green+','+blue+')';
+	context.fill();
+	context.beginPath();
 }
 
 function resize_canvas() {
