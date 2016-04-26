@@ -143,7 +143,7 @@ function resize_canvas() {
     sizing.height = window.innerHeight;
     
     var ctx = sizing.getContext("2d");
-    var img = new Image;
+    var img = new Image();
     img.onload = function() {
         ctx.drawImage(img, 0,0);
     };
@@ -161,12 +161,24 @@ function resize_canvas() {
 	*/
 }
 
-testPOSTRequest();
-function testPOSTRequest() {
+
+//remember to call nameAvailable first before sending the image
+//responseText is True or False for nameAvailable, and okay or just nothing(if it breaks) for sendPOSTRequest
+//nameAvailable("testImageName");
+//sendPOSTRequest("testImageName","SomeBullshitYouGetFromCallingCanvasToDataURL");
+function sendPOSTRequest(imageName, imageData) {
 	var xhttp = new XMLHttpRequest();
-	var msg = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAPTCAYAAABR9xSMAAAg";
+	var msg = imageName + "&" + imageData;
 	xhttp.open("POST", "submit", true);
 	xhttp.setRequestHeader("Content-type", "img");
-	xhttp.setRequestHeader("Content-Length", msg.length);
 	xhttp.send(msg);
+	xhttp.onreadystatechange = function() {
+		if (xhttp.readyState === 4 && xhttp.status === 200) {
+			console.log(xhttp.responseText);
+		}
+	}
+}
+
+function nameAvailable(imageName) {
+	sendPOSTRequest("check", imageName);
 }
