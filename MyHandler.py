@@ -5,7 +5,6 @@ except ImportError:
 	from http.server import SimpleHTTPRequestHandler as Handler
 	from http.server import HTTPServer as Server
 from SqlHandler import SqlHandler
-from unicodedata import normalize
 
 class MyHandler(Handler, object):
 	sql = SqlHandler()
@@ -19,7 +18,7 @@ class MyHandler(Handler, object):
 				self.send_response(200)
 				self.send_header("Content-type", "text/text")
 				self.end_headers()
-				response = unicodedata.normalize("NFC",response[0][0]).encode('ascii','ignore')
+				response = response[0][0]
 				self.wfile.write(response)
 			else:
 				response = "image not found"
