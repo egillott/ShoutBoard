@@ -91,7 +91,8 @@ function saveImage() {
 function loadImage() {
     var imagename = prompt("What image would you like to retrieve?", "Sample Name");
     if (imagename !== null) {
-   	
+   		tryGetting(imagename);
+   	}
    /*
         var response = nameAvailable(imagename);
         if (response === "False") {
@@ -102,8 +103,9 @@ function loadImage() {
         }
        */
 //      window.open(data, '_blank', 'location=0, menubar=0');
-    }
+//    }
 }
+
 var dropPen = function(e) {
     if (drawMode) {
         penDown = true;
@@ -158,6 +160,20 @@ function updateIndicator() {
 	context.beginPath();
 }
 
+function getImageData(imageData) {
+    var sizing = document.getElementById("whatANiceCanvas");
+	sizing.width = window.innerWidth;
+    sizing.height = window.innerHeight;
+    
+    var ctx = sizing.getContext("2d");
+    var img = new Image();
+    img.onload = function() {
+        ctx.drawImage(img, 0,0);
+    };
+    img.src = imageData;
+    init();
+}
+
 function resize_canvas() {
 	// do something with canvas
 	var data = canvas.toDataURL();
@@ -205,6 +221,18 @@ function tryUploading(imageName, imageData) {
 			if (xhttp.responseText === "True") {
 				sendPOSTRequest(imageName, imageData);
 			}
+		}
+	};
+}
+
+function tryGetting(imageName) {
+	var xhttp = new XMLHttpRequest();
+	var path = "image/" + imageName;
+	xhttp.open("GET", path, true);
+	xhttp.send();
+	xhttp.onreadystatechange = function() {
+		if (xhttp.readyState === 4 && xhttp.status === 200) {
+			getImageData(xhttp.responseText);
 		}
 	};
 }
