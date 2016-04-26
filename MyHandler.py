@@ -4,7 +4,7 @@ try:
 except ImportError:
 	from http.server import SimpleHTTPRequestHandler as Handler
 	from http.server import HTTPServer as Server
-from urlparse import parse_qs
+#from urlparse import parse_qs
 
 class MyHandler(Handler, object):
 	def do_GET(self):
@@ -14,7 +14,8 @@ class MyHandler(Handler, object):
 		print("i think this is what i want" ,self.path)
         content_len = int(self.headers.get('Content-Length', 0))
 		post_body = self.rfile.read(content_len).decode("utf-8")
-		result = parse_qs(post_body)
-		
+#		result = parse_qs(post_body)
+#        for k in result:
+#            print(result[k])
 		
 		super(MyHandler, self).do_POST()
