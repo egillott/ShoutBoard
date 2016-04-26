@@ -4,7 +4,7 @@ try:
 except ImportError:
 	from http.server import SimpleHTTPRequestHandler as Handler
 	from http.server import HTTPServer as Server
-from urllib.parse import parse_qs
+from urlparse import parse_qs
 
 class MyHandler(Handler, object):
 	def do_GET(self):
