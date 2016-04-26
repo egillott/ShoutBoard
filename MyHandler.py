@@ -12,7 +12,7 @@ class MyHandler(Handler, object):
 		
 	def do_POST(self):
 		print("url path" ,self.path)
-		print("headers" ,self.headers)
+		print(self.headers)
 		
 #        content_len = int(self.headers.get('Content-Length', 0))
 #		post_body = self.rfile.read(content_len).decode("utf-8")

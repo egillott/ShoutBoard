@@ -124,5 +124,6 @@ function testPOSTRequest() {
   	};
 	xhttp.open("POST", "submit", true);
 	xhttp.setRequestHeader("Content-type", "img");
+	xhttp.setRequestHeader("Content-Length", "70");
 	xhttp.send("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAPTCAYAAABR9xSMAAAg");
 }
