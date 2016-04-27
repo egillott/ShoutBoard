@@ -13,7 +13,7 @@ var blue = 0;
 var drawMode = false;
 var eraser = false;
 changeMode();
-
+//
 var names;
 
 var context = canvas.getContext('2d');
