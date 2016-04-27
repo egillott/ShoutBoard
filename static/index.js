@@ -201,7 +201,7 @@ function getImageData(imageData) {
 
 function populateNameList(nameList) {
 	//TODO someshit
-	var imagename = prompt(nameList, "Sample Name");
+	var imagename = prompt(nameList, "MyDrawing");
     if (imagename !== null) {
    		tryGetting(imagename);
    	}
