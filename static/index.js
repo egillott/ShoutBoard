@@ -100,10 +100,12 @@ function clearCanvas() {
 function saveImage() {
     var data = canvas.toDataURL();
     
-    
     var imagename = prompt("Name your image", "Sample Name");
-   	if (imagename !== null) {
+   	if (imagename !== null && imagename.indexOf(' ', 0) === -1) {
    		tryUploading(imagename, data);
+	}
+	else {
+		window.alert("Invalid image name. Please do not use spaces");
 	}
 
  //   window.open(data, '_blank', 'location=0, menubar=0');
@@ -194,7 +196,7 @@ function getImageData(imageData) {
 
 function populateNameList(nameList) {
 	//TODO someshit
-	var str = "Available images: ";
+	var str = "Available images:\n";
 	var str2 = str.concat(nameList);
 	var imagename = prompt(str2, "MyDrawing");
     if (imagename !== null) {
