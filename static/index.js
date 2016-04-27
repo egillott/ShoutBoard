@@ -261,12 +261,12 @@ function tryGetting(imageName) {
 	xhttp.send();
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState === 4 && xhttp.status === 200) {
-			console.log(xhttp.responseText);
 			getImageData(xhttp.responseText);
 		}
 	};
 }
 
+//this returns a comma separated list of names, ex, "test000,test001,wow"
 function getNameList() {
 	var xhttp = new XMLHttpRequest();
 	var path = "name";
@@ -274,7 +274,6 @@ function getNameList() {
 	xhttp.send();
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState === 4 && xhttp.status === 200) {
-			console.log(xhttp.responseText);
 			populateNameList(xhttp.responseText);
 		}
 	};
