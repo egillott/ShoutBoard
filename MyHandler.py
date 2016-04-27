@@ -27,7 +27,8 @@ class MyHandler(Handler, object):
 				self.end_headers()
 				self.wfile.write(response)
 		elif recv.startswith('/name'):
-			response = self.sql.getNameList()[0]
+			sqlResp = self.sql.getNameList()
+			response = sqlResp
 			print("name list", response)
 			self.send_response(200)
 			self.send_header("Content-type", "text/text")
