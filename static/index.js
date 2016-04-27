@@ -114,7 +114,8 @@ function saveImage() {
  //   window.open(data, '_blank', 'location=0, menubar=0');
 }
 function loadImage() {
-    var imagename = prompt("What image would you like to retrieve?", "Sample Name");
+	var names = getNameList();
+    var imagename = prompt(names, "Sample Name");
     if (imagename !== null) {
    		tryGetting(imagename);
    	}
