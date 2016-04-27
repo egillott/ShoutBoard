@@ -149,9 +149,9 @@ canvas.addEventListener('mouseup', liftPen);
 function init() {
 	penSize = 5;
     penDown = false;
-    drawMode = false;
+    drawMode = true;
     context.lineWidth = penSize * 2;
-    changeMode();
+    //changeMode();
     updateIndicator();
 }
 
