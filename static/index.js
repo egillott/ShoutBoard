@@ -199,6 +199,10 @@ function getImageData(imageData) {
     init();
 }
 
+function populateNameList(nameList) {
+	//TODO someshit
+}
+
 function resize_canvas() {
 	// do something with canvas
 	var data = canvas.toDataURL();

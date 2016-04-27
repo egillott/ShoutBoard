@@ -29,3 +29,10 @@ class SqlHandler:
 		c = self.conn.cursor()
 		c.execute(query)
 		return c.fetchall()
+
+	def getNameList(self):
+		query = "SELECT name FROM image"
+		c = self.conn.cursor()
+		c.execute(query)
+		return c.fetchall()
+		
