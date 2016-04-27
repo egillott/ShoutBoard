@@ -11,7 +11,7 @@ var red = 0;
 var green = 0;
 var blue = 0;
 var drawMode = false;
-
+var eraser = false;
 changeMode();
 
 var context = canvas.getContext('2d');
@@ -60,6 +60,31 @@ function draw() {
     context.clearRect(-offsetX, -offsetY, window.innerWidth, window.innerHeight);
     context.drawImage(image,0,0);
     context.restore();
+}
+
+var red2;
+var green2;
+var blue2;
+
+function eraserMode() {
+    var eraserbutton = document.getElementById("eraser");
+    if (!eraser) {
+        red2 = red;
+        green2 = green;
+        blue2 = blue;
+        red = 256;
+        green = 256;
+        blue = 256;
+        eraserbutton.value = "Pen";
+    }
+    else {
+        eraserbutton.value = "Eraser";
+        red = red2;
+        green = green2;
+        blue = blue2;
+    }
+    eraser = !eraser;
+    
 }
 function changeMode() {
     var x = document.getElementById("mode");
