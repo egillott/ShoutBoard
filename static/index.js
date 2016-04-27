@@ -10,9 +10,9 @@ var penDown = false;
 var red = 0;
 var green = 0;
 var blue = 0;
-var drawMode = false;
+var drawMode = true;
 var eraser = false;
-changeMode();
+//changeMode();
 //
 
 var context = canvas.getContext('2d');
@@ -82,14 +82,14 @@ function eraserMode() {
     
 }
 function changeMode() {
-    var x = document.getElementById("mode");
-    if (!drawMode) {
-        x.value = "Go Into Navigate Mode";
-    }
-    else {
-        x.value = "Go Into Draw Mode";
-    }
-    drawMode = !drawMode;
+    //var x = document.getElementById("mode");
+    //if (!drawMode) {
+    //    x.value = "Go Into Navigate Mode";
+    //}
+    //else {
+    //    x.value = "Go Into Draw Mode";
+    //}
+    //drawMode = !drawMode;
 }
 function clearCanvas() {
     if (confirm("Are you sure you want to clear?") === true) {
