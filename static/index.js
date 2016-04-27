@@ -194,6 +194,13 @@ function getImageData(imageData) {
 
 function populateNameList(nameList) {
 	//TODO someshit
+	var str = "Available images: ";
+	for (var i = 0; i < nameList.length(); i++) {
+		if (nameList[i]===',') {
+			nameList[i]='\n';
+		}
+	}
+	var str2 = str.concat(nameList);
 	var imagename = prompt(nameList, "MyDrawing");
     if (imagename !== null) {
    		tryGetting(imagename);
