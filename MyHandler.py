@@ -30,7 +30,7 @@ class MyHandler(Handler, object):
 			sqlResp = self.sql.getNameList()
 			response = ""
 			for str in sqlResp:
-				response += str[0] + ","
+				response += str[0] + "\n"
 			response = response[0:response.__len__()-1]
 			print("name list", response)
 			self.send_response(200)
