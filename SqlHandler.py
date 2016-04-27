@@ -35,4 +35,3 @@ class SqlHandler:
 		c = self.conn.cursor()
 		c.execute(query)
 		return c.fetchall()
-		

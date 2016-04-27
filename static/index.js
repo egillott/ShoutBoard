@@ -266,3 +266,16 @@ function tryGetting(imageName) {
 		}
 	};
 }
+
+function getNameList() {
+	var xhttp = new XMLHttpRequest();
+	var path = "name";
+	xhttp.open("GET", path, true);
+	xhttp.send();
+	xhttp.onreadystatechange = function() {
+		if (xhttp.readyState === 4 && xhttp.status === 200) {
+			console.log(xhttp.responseText);
+			populateNameList(xhttp.responseText);
+		}
+	};
+}
