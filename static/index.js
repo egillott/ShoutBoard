@@ -14,6 +14,8 @@ var drawMode = false;
 var eraser = false;
 changeMode();
 
+var names;
+
 var context = canvas.getContext('2d');
 
 var offsetX = 0;
@@ -114,11 +116,8 @@ function saveImage() {
  //   window.open(data, '_blank', 'location=0, menubar=0');
 }
 function loadImage() {
-	var names = getNameList();
-    var imagename = prompt(names, "Sample Name");
-    if (imagename !== null) {
-   		tryGetting(imagename);
-   	}
+	getNameList();
+    
    /*
         var response = nameAvailable(imagename);
         if (response === "False") {
@@ -202,6 +201,10 @@ function getImageData(imageData) {
 
 function populateNameList(nameList) {
 	//TODO someshit
+	var imagename = prompt(nameList, "Sample Name");
+    if (imagename !== null) {
+   		tryGetting(imagename);
+   	}
 }
 
 function resize_canvas() {
