@@ -2,8 +2,8 @@
 /*globals ActiveXObject */
 
 var canvas = document.getElementById('whatANiceCanvas');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = 3000;
+canvas.height = 3000;
 
 var penSize = 5;
 var penDown = false;
@@ -14,18 +14,12 @@ var drawMode = false;
 var eraser = false;
 changeMode();
 //
-var names;
 
 var context = canvas.getContext('2d');
 
 var offsetX = 0;
 var offsetY = 0;
 
-var image = new Image();
-image.onload = function() {
-    draw();
-};
-image.src='images/test.png';
 
 context.lineWidth = penSize * 2;
 
@@ -60,7 +54,6 @@ function draw() {
     context.save();
     context.translate(offsetX, offsetY);
     context.clearRect(-offsetX, -offsetY, window.innerWidth, window.innerHeight);
-    context.drawImage(image,0,0);
     context.restore();
 }
 
