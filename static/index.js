@@ -201,7 +201,7 @@ function populateNameList(nameList) {
 		}
 	}
 	var str2 = str.concat(nameList);
-	var imagename = prompt(nameList, "MyDrawing");
+	var imagename = prompt(str2, "MyDrawing");
     if (imagename !== null) {
    		tryGetting(imagename);
    	}
